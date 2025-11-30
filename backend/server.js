@@ -37,7 +37,9 @@ app.post("/buy", (req, res) => {
   const { name, amount } = req.body;
 
   if (!name || !amount || amount < 10) {
-    return res.status(400).json({ error: "Podaj poprawne dane i kwotę min. 10 zł" });
+    return res
+      .status(400)
+      .json({ error: "Podaj poprawne dane i kwotę min. 10 zł" });
   }
 
   const numTickets = Math.floor(amount / 10);
@@ -61,6 +63,20 @@ app.post("/buy", (req, res) => {
   fs.writeFileSync(TICKETS_FILE, JSON.stringify(state, null, 2));
 
   res.json({ tickets: newTickets });
+});
+
+// GET - resetowanie losów / faza testowa
+
+app.get("/reset", (req, res) => {
+  state = {
+    available: Array.from({ length: TOTAL_TICKETS }, (_, i) => i + 1),
+    history: [],
+  };
+
+  fs.writeFile(TICKETS_FILE, JSON.stringify(state, null, 2), (err) => {
+    if (err) return res.status(500).json({ message: "Błąd resetowania" });
+    res.json({ message: "Reset udany" });
+  });
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
