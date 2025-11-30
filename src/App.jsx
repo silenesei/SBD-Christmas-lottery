@@ -20,7 +20,7 @@ export default function App() {
   useEffect(() => {
     const fetchState = async () => {
       try {
-        const res = await fetch("http://localhost:4000/tickets");
+        const res = await fetch("https://sbd-christmas-lottery.onrender.com/tickets");
         const data = await res.json();
         dispatch({ type: "INIT", payload: data });
       } catch (err) {
@@ -42,7 +42,7 @@ export default function App() {
     }
 
     try {
-      const res = await fetch("http://localhost:4000/buy", {
+      const res = await fetch("https://sbd-christmas-lottery.onrender.com/buy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name.trim(), amount: amountNum }),
@@ -58,7 +58,7 @@ export default function App() {
       setName("");
       setAmount("");
 
-      const stateRes = await fetch("http://localhost:4000/tickets");
+      const stateRes = await fetch("https://sbd-christmas-lottery.onrender.com/tickets");
       const stateData = await stateRes.json();
       dispatch({ type: "INIT", payload: stateData });
     } catch (err) {
