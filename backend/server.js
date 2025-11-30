@@ -7,7 +7,7 @@ const PORT = 4000;
 app.use(cors());
 app.use(express.json());
 
-const TICKETS_FILE = "tickets.json";
+const TICKETS_FILE = __dirname + "/tickets.json";
 const TOTAL_TICKETS = 200;
 
 // początkowa pula losów

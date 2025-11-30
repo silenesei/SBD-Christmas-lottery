@@ -17,12 +17,11 @@ export default function App() {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
 
-
   useEffect(() => {
     const fetchState = async () => {
       try {
         const res = await fetch(
-          "https://sbd-christmas-2025.onrender.com/tickets"
+          "https://sbd-christmas-lottery.onrender.com/tickets"
         );
         const data = await res.json();
         dispatch({ type: "INIT", payload: data });
@@ -45,11 +44,14 @@ export default function App() {
     }
 
     try {
-      const res = await fetch("https://sbd-christmas-2025.onrender.com/buy", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), amount: amountNum }),
-      });
+      const res = await fetch(
+        "https://sbd-christmas-lottery.onrender.com/buy",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: name.trim(), amount: amountNum }),
+        }
+      );
       const data = await res.json();
 
       if (data.error) {
@@ -62,7 +64,7 @@ export default function App() {
       setAmount("");
 
       const stateRes = await fetch(
-        "https://sbd-christmas-2025.onrender.com/tickets"
+        "https://sbd-christmas-lottery.onrender.com/tickets"
       );
       const stateData = await stateRes.json();
       dispatch({ type: "INIT", payload: stateData });
