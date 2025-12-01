@@ -21,7 +21,7 @@ export default function App() {
     const fetchState = async () => {
       try {
         const res = await fetch(
-          "https://sbd-christmas-lottery.onrender.com/tickets"
+          "https://sbd-christmas-lottery-production.up.railway.app/tickets"
         );
         const data = await res.json();
         dispatch({ type: "INIT", payload: data });
@@ -45,7 +45,7 @@ export default function App() {
 
     try {
       const res = await fetch(
-        "https://sbd-christmas-lottery.onrender.com/buy",
+        "https://sbd-christmas-lottery-production.up.railway.app/buy",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -64,7 +64,7 @@ export default function App() {
       setAmount("");
 
       const stateRes = await fetch(
-        "https://sbd-christmas-lottery.onrender.com/tickets"
+        "https://sbd-christmas-lottery-production.up.railway.app/tickets"
       );
       const stateData = await stateRes.json();
       dispatch({ type: "INIT", payload: stateData });
