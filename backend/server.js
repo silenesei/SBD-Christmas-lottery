@@ -67,16 +67,16 @@ app.post("/buy", (req, res) => {
 
 // GET - resetowanie losów / faza testowa
 
-app.get("/reset", (req, res) => {
-  state = {
-    available: Array.from({ length: TOTAL_TICKETS }, (_, i) => i + 1),
-    history: [],
-  };
+// app.get("/reset", (req, res) => {
+//   state = {
+//     available: Array.from({ length: TOTAL_TICKETS }, (_, i) => i + 1),
+//     history: [],
+//   };
 
-  fs.writeFile(TICKETS_FILE, JSON.stringify(state, null, 2), (err) => {
-    if (err) return res.status(500).json({ message: "Błąd resetowania" });
-    res.json({ message: "Reset udany" });
-  });
-});
+//   fs.writeFile(TICKETS_FILE, JSON.stringify(state, null, 2), (err) => {
+//     if (err) return res.status(500).json({ message: "Błąd resetowania" });
+//     res.json({ message: "Reset udany" });
+//   });
+// });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
