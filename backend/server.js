@@ -8,11 +8,15 @@ app.use(cors());
 app.use(express.json());
 
 const TICKETS_FILE = __dirname + "/tickets.json";
-const TOTAL_TICKETS = 200;
+const FIRST_TICKET = 201;
+const LAST_TICKET = 400;
 
 // początkowa pula losów
 let state = {
-  available: Array.from({ length: TOTAL_TICKETS }, (_, i) => i + 1),
+  available: Array.from(
+    { length: LAST_TICKET - FIRST_TICKET + 1 },
+    (_, i) => FIRST_TICKET + i
+  ),
   history: [],
 };
 
