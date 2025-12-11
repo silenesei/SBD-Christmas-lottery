@@ -21,15 +21,15 @@ let state = {
 };
 
 // wczytanie stanu z pliku, jeśli istnieje
-if (fs.existsSync(TICKETS_FILE)) {
-  try {
-    const savedState = JSON.parse(fs.readFileSync(TICKETS_FILE, "utf-8"));
-    state = savedState;
-    console.log("Wczytano stan z tickets.json");
-  } catch (err) {
-    console.error("Błąd wczytywania tickets.json:", err);
-  }
-}
+// if (fs.existsSync(TICKETS_FILE)) {
+//   try {
+//     const savedState = JSON.parse(fs.readFileSync(TICKETS_FILE, "utf-8"));
+//     state = savedState;
+//     console.log("Wczytano stan z tickets.json");
+//   } catch (err) {
+//     console.error("Błąd wczytywania tickets.json:", err);
+//   }
+// }
 
 // GET - pobierz aktualny stan
 app.get("/tickets", (req, res) => {
